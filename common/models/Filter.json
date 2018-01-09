@@ -1,0 +1,30 @@
+{
+    "name": "Filter",
+    "idInjection": true,
+    "options": {
+      "validateUpsert": true
+    },
+    "properties": {
+      "name": {
+        "type": "string",
+        "required": true
+      },
+      "description": {
+        "type": "string",
+        "required": false
+      },
+      "query" : {
+        "type": "object",
+        "required": true
+      },
+      "userId" : {
+          "type": "any",
+          "required": true
+      }
+    },
+    "validations": [],
+    "relations": {},
+    "acls": [],
+    "methods": {}
+  }
+  
