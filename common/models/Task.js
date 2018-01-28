@@ -13,7 +13,8 @@ module.exports = function (Task) {
   });
 
   Task.prototype.complete = function(data, options, cb) {
-    return this.updateAttributes({status:1}).then((result) => {
+    return this.updateAttributes({status:2}).then((result) => {
+      Task.emit('complete',this);
       return;
     });
   };
