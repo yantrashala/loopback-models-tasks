@@ -1,6 +1,6 @@
 {
   "name": "loopback-models-tasks",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "Loopback models for task api",
   "main": "test/fixtures/loopback-app/server/server.js",
   "scripts": {

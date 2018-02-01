@@ -3,7 +3,7 @@
 module.exports = function (Task) {
   var methodNames = [
     "replaceOrCreate", "patchOrCreate", "findOne",
-    "findById", "destroyById",
+    "destroyById",
     "count", "exists", "replaceById", "prototype.patchAttributes",
     "replaceById", "upsertWithWhere"
   ];
@@ -12,9 +12,9 @@ module.exports = function (Task) {
     Task.disableRemoteMethodByName(name);
   });
 
-  Task.prototype.complete = function(data, options, cb) {
-    return this.updateAttributes({status:2}).then((result) => {
-      Task.emit('complete',this);
+  Task.prototype.complete = function (data, options, cb) {
+    return this.updateAttributes({ status: 2 }).then((result) => {
+      Task.emit('complete', this);
       return;
     });
   };
@@ -26,14 +26,14 @@ module.exports = function (Task) {
     accepts: [
       {
         arg: 'data', type: 'object', model: 'any',
-        http: {source: 'body'},
+        http: { source: 'body' },
         description: 'An object of formValue property name/value pairs',
       },
-      {arg: 'options', type: 'object', http: 'optionsFromRequest'},
+      { arg: 'options', type: 'object', http: 'optionsFromRequest' },
     ],
-    returns: {arg: 'data', type: 'any', root: true},
-    http: [{verb: 'put', path: '/complete'}],
+    returns: { arg: 'data', type: 'any', root: true },
+    http: [{ verb: 'put', path: '/complete' }],
   };
 
-  Task.remoteMethod('prototype.complete',completeOptions);
+  Task.remoteMethod('prototype.complete', completeOptions);
 };
